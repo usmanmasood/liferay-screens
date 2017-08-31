@@ -144,6 +144,11 @@ public class PortletDisplayView extends FrameLayout
 
 	@Override
 	public void configureView(boolean isCordovaEnabled, CordovaLifeCycleObserver observer) {
+		if (screensWebView != null) {
+			isLoaded = false;
+			return;
+		}
+
 		if (isCordovaEnabled) {
 			screensWebView = new ScreensCordovaWebView(
 				LiferayScreensContext.getActivityFromContext(getContext()), observer);
