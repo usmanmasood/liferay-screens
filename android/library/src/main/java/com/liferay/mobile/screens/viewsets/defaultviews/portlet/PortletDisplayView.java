@@ -200,7 +200,7 @@ public class PortletDisplayView extends FrameLayout
 			// The webview shows a white screen before loading its content, this prevent that.
 			webView.setAlpha(0);
 			webView.setVisibility(VISIBLE);
-			webView.animate().setStartDelay(200).alpha(1.0f);
+			webView.animate().setStartDelay(500).alpha(1.0f);
 
 			progressBar.setVisibility(GONE);
 
