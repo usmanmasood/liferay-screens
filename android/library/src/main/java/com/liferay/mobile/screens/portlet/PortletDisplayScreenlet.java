@@ -16,9 +16,11 @@ package com.liferay.mobile.screens.portlet;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView;
 import com.liferay.mobile.android.auth.Authentication;
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
 import com.liferay.mobile.screens.R;
@@ -27,7 +29,6 @@ import com.liferay.mobile.screens.base.interactor.Interactor;
 import com.liferay.mobile.screens.context.LiferayScreensContext;
 import com.liferay.mobile.screens.context.LiferayServerContext;
 import com.liferay.mobile.screens.context.SessionContext;
-import com.liferay.mobile.screens.portlet.util.CssScript;
 import com.liferay.mobile.screens.portlet.util.InjectableScript;
 import com.liferay.mobile.screens.portlet.util.JsScript;
 import com.liferay.mobile.screens.portlet.view.PortletDisplayViewModel;
@@ -88,6 +89,17 @@ public class PortletDisplayScreenlet extends BaseScreenlet<PortletDisplayViewMod
 
 			if (PortletConfiguration.WebType.LIFERAY_AUTHENTICATED.equals(
 				portletConfiguration.getWebType())) {
+			WebView webView = getViewModel().getWebView();
+
+			String javascript = "console.log('Ejecutando en Screenlet');"
+				+ "var g = function() {console.error('Lanzado en Screenlet');};document.addEventListener('DOMContentLoaded', g, false);";
+			String header = "javascript:";
+
+			webView.loadUrl(header + javascript);
+
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+				//webView.evaluateJavascript(javascript, null);
+			}
 
 				if (SessionContext.isLoggedIn()) {
 					getViewModel().postUrl(finalUrl, body);

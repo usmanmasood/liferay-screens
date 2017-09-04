@@ -1,6 +1,7 @@
 package com.liferay.mobile.screens.viewsets.defaultviews.portlet;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -182,10 +183,21 @@ public class PortletDisplayView extends FrameLayout
 			});
 		}
 	}
+	
+	@Override
+	public WebView getWebView() {
+		return webView;
+	}
 
 	@Override
 	public void onPageStarted() {
 		webView.addJavascriptInterface(new PortletDisplayInterface(), "android");
+
+		String javascript = "console.log('Ejecutando en PortletDisplayView');"
+			+ "var g = function() {console.error('Lanzado en PortletDisplayView');};document.addEventListener('DOMContentLoaded', g, false);";
+		String header = "javascript:";
+
+		webView.loadUrl(header + javascript);
 	}
 
 	@Override
@@ -197,6 +209,23 @@ public class PortletDisplayView extends FrameLayout
 				injectScript(script);
 			}
 
+			String javascript = "function test() {\n"
+				+ "    if (document.readyState === 'complete') {\n"
+				+ "        console.error('Ejecutando con timeout')\n"
+				+ "    } else {\n"
+				//+ "console.error('fail' + document.readyState);"
+				+ "        setTimeout(test, 200);\n"
+				+ "    }\n"
+				+ "};\n"
+				+ "test();";
+
+			String header = "javascript:";
+
+			webView.loadUrl(header + javascript);
+
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+				//webView.evaluateJavascript(javascript, null);
+			}
 			// The webview shows a white screen before loading its content, this prevent that.
 			webView.setAlpha(0);
 			webView.setVisibility(VISIBLE);

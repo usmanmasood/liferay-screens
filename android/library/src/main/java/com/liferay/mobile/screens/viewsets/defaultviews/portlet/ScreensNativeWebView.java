@@ -22,7 +22,7 @@ public class ScreensNativeWebView extends WebViewClient implements ScreensWebVie
 	public ScreensNativeWebView(Context context) {
 		webView = new WebView(context);
 		webView.setWebViewClient(this);
-		webView.setWebChromeClient(new WebChromeClient());
+		webView.setWebChromeClient(new CustomWebChromeClient());
 	}
 
 	@Override
@@ -80,6 +80,20 @@ public class ScreensNativeWebView extends WebViewClient implements ScreensWebVie
 
 		if (listener != null) {
 			listener.onPageError(new Exception(description));
+		}
+	}
+
+	private class CustomWebChromeClient extends WebChromeClient {
+
+		@Override
+		public void onProgressChanged(WebView view, int newProgress) {
+			super.onProgressChanged(view, newProgress);
+
+			String javascript = "console.log('Ejecutando en CustomWebChromeClient');"
+				+ "var g = function() {console.error('Lanzado en CustomWebChromeClient');};document.addEventListener('DOMContentLoaded', g, false);";
+			String header = "javascript:";
+
+			webView.loadUrl(header + javascript);
 		}
 	}
 }
