@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.liferay.mobile.screens.ddl.form.DDLFormScreenlet xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/ddl_form"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	app:autoLoad="false"
+	app:checkboxFieldLayoutId="@layout/ddlfield_checkbox_material"
+	app:dateFieldLayoutId="@layout/ddlfield_date_material"
+	app:recordSetId="39050"
+	app:selectFieldLayoutId="@layout/ddlfield_select_material"
+	app:structureId="39046"
+	>
+
+</com.liferay.mobile.screens.ddl.form.DDLFormScreenlet>
+

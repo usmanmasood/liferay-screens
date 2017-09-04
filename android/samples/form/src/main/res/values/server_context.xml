@@ -1,0 +1,7 @@
+<resources>
+	<integer name="liferay_portal_version">70</integer>
+	<string name="liferay_server">http://screens.liferay.org.es/</string>
+	<string name="liferay_company_id">20116</string>
+	<string name="liferay_group_id">20143</string>
+
+</resources>
