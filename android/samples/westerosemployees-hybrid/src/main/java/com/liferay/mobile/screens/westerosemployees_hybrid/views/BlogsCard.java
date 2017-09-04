@@ -63,7 +63,7 @@ public class BlogsCard extends Card implements PortletDisplayListener {
 	protected void onFinishInflate() {
 		super.onFinishInflate();
 		portletDisplayScreenlet = (PortletDisplayScreenlet) findViewById(R.id.portlet_blogs);
-
+		portletDisplayScreenlet.setAutoLoad(false);
 	}
 
 	@Override

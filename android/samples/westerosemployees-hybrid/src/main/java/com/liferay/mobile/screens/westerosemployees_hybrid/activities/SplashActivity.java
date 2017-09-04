@@ -16,7 +16,7 @@ import static com.liferay.mobile.screens.westerosemployees_hybrid.activities.Tou
  */
 public class SplashActivity extends Activity {
 
-	private static final int DELAY_MILLIS = 2000;
+	private static final int DELAY_MILLIS = 20;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

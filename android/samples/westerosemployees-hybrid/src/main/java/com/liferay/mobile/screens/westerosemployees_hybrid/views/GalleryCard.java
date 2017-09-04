@@ -70,9 +70,9 @@ public class GalleryCard extends Card implements ImageGalleryListener, PortletDi
 				"gallery_portlet_css.css").addRawJs(R.raw.gallery_portlet_js, "gallery_portlet_js.js").load();
 
 		portletDisplayScreenlet = (PortletDisplayScreenlet) findViewById(R.id.portlet_gallery);
-
+		portletDisplayScreenlet.setAutoLoad(false);
 		portletDisplayScreenlet.setPortletConfiguration(configuration);
-		portletDisplayScreenlet.load();
+		//portletDisplayScreenlet.load();
 		portletDisplayScreenlet.setListener(this);
 	}
 

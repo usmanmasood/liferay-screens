@@ -86,8 +86,8 @@ public class PortletDisplayView extends FrameLayout
 
 	@Override
 	public void injectScript(InjectableScript script) {
-		injectScript("window.currentFile = '" + script.getName() + "';");
-		injectScript(script.getContent());
+		//injectScript("window.currentFile = '" + script.getName() + "';");
+		//injectScript(script.getContent());
 	}
 
 	@Override

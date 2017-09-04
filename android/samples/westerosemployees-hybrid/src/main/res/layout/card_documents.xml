@@ -2,6 +2,7 @@
 <com.liferay.mobile.screens.westerosemployees_hybrid.views.DocsCard xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:background="@drawable/westeros_white_shape_ripple"
 	android:elevation="8dp"
 	>
@@ -32,6 +33,7 @@
 			android:id="@+id/portlet_docs"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			app:autoLoad="false"
 			android:layout_below="@id/documents_title"
 			/>
 
